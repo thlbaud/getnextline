@@ -6,7 +6,7 @@
 /*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:06:42 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/19 22:08:51 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/22 15:01:20 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-size_t	ft_strlen(const char *s);
 char	*get_next_line(int fd);
-char	*ft_fill_buf(char *str, int fd);
-
-typedef struct	s_list
-{
-	char	*content;
-	struct s_list	*next;
-}			t_list;
-
-t_list	*ft_lstnew();
-int	ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
+size_t	ft_strlen(const char *s);
+size_t	ft_strchr(const char *s);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_strcpy_limit(char *buff, size_t len);
 
 #endif
