@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 21:33:13 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/23 15:55:20 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/23 21:20:01 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_fill_buff(char	*buff)
 	size_t	offset;
 
 	if (buff[0] == 0)
-		return (ft_reset_buff(buff), NULL);
+		return (NULL);
 	index = 0;
 	while (buff[index] && buff[index] != '\n')
 		index++;
@@ -44,7 +44,7 @@ char	*ft_strcpy_limit(char *buff, size_t len)
 
 	dest = ft_calloc(sizeof(char), len + 1);
 	if (!dest)
-		return (NULL);
+		return (ft_reset_buff(buff), NULL);
 	index = 0;
 	while (buff && buff[index] != '\n' && buff[index])
 	{
@@ -69,7 +69,7 @@ char	*ft_to_create_line(int fd, char *buff, char *line)
 		if (!line)
 			return (NULL);
 		if (ft_strchr(line, size) > 0)
-			return (ft_reset_buff(buff), line);
+			return (line);
 		size = read(fd, buff, BUFFER_SIZE);
 		if (size < 0)
 			return (ft_reset_buff(buff), free(line), NULL);
@@ -90,23 +90,23 @@ char	*get_next_line(int fd)
 	if (buff[0] == 0)
 	{
 		if (read(fd, buff, BUFFER_SIZE) < 0)
-			return (NULL);
+			return (ft_reset_buff(buff), NULL);
 		if (buff[0] == 0)
-			return (NULL);
+			return (ft_reset_buff(buff), NULL);
 		buff[BUFFER_SIZE] = 0;
 	}
 	if (buff[0] && (ft_strchr(buff, BUFFER_SIZE) > 0 || buff[0] == '\n'))
 	{
 		line = ft_strcpy_limit(buff, ft_strchr(buff, BUFFER_SIZE));
 		if (!line)
-			return (ft_reset_buff(buff), NULL);
+			return (NULL);
 		ft_fill_buff(buff);
 		return (line);
 	}
 	line = NULL;
 	line = ft_to_create_line(fd, buff, line);
 	if (!line)
-		return (ft_reset_buff(buff), NULL);
+		return (NULL);
 	ft_fill_buff(buff);
 	return (line);
 }

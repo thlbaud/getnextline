@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 22:26:43 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/23 15:59:08 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/23 20:30:58 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char	*ft_calloc(size_t nmemb, size_t size)
 	if (nmemb == 0 || size == 0)
 	{
 		alloc = malloc(size * nmemb);
+		if (!alloc)
+			return (NULL);
 		return (alloc);
 	}
 	if (size > (SIZE_MAX / nmemb) || nmemb > (SIZE_MAX / size))
@@ -89,7 +91,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	dest = ft_calloc(sizeof(char), ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!dest)
-		return (NULL);
+		return (ft_reset_buff(s2), NULL);
 	index = 0;
 	if (s1)
 	{
