@@ -6,12 +6,27 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 22:26:43 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/23 13:41:52 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/23 15:59:08 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdint.h>
+
+char	*ft_reset_buff(char	*buff)
+{
+	size_t	index;
+
+	index = 0;
+	buff[index] = 0;
+	index++;
+	while (index < BUFFER_SIZE)
+	{
+		buff[index] = 0;
+		index++;
+	}
+	return (buff);
+}
 
 size_t	ft_strlen(const char *s)
 {
@@ -55,14 +70,14 @@ size_t	ft_strchr(const char *s, size_t size)
 	i = 0;
 	if (!s)
 		return (i);
-	if (size < BUFFER_SIZE)
-		return (1);
 	while (s[i])
 	{
 		if (s[i] == '\n')
 			return (++i);
 		i++;
 	}
+	if (size < BUFFER_SIZE)
+		return (1);
 	return (0);
 }
 
@@ -87,31 +102,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	index2 = 0;
 	while (s2[index2] && s2[index2] != '\n')
-	{
-		dest[index] = s2[index2];
-		index2++;
-		index++;
-	}
+		dest[index++] = s2[index2++];
 	if (s2[index2] == '\n')
-		dest[index] = '\n';
-	return (dest);
-}
-
-char	*ft_strcpy_limit(char *buff, size_t len)
-{
-	char	*dest;
-	size_t	index;
-
-	dest = ft_calloc(sizeof(char), len + 1);
-	if (!dest)
-		return (NULL);
-	index = 0;
-	while (buff && buff[index] != '\n' && buff[index])
-	{
-		dest[index] = buff[index];
-		index++;
-	}
-	if (buff[index] == '\n')
 		dest[index] = '\n';
 	return (dest);
 }

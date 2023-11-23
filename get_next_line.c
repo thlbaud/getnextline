@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 21:33:13 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/23 14:07:05 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/23 15:55:20 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ char	*ft_fill_buff(char	*buff)
 	size_t	offset;
 
 	if (buff[0] == 0)
-		return (NULL);
+		return (ft_reset_buff(buff), NULL);
 	index = 0;
 	while (buff[index] && buff[index] != '\n')
 		index++;
-	index++;
+	if (buff[index] == '\n')
+		index++;
 	offset = 0;
 	while (buff[index])
 	{
@@ -36,26 +37,45 @@ char	*ft_fill_buff(char	*buff)
 	return (buff);
 }
 
+char	*ft_strcpy_limit(char *buff, size_t len)
+{
+	char	*dest;
+	size_t	index;
+
+	dest = ft_calloc(sizeof(char), len + 1);
+	if (!dest)
+		return (NULL);
+	index = 0;
+	while (buff && buff[index] != '\n' && buff[index])
+	{
+		dest[index] = buff[index];
+		index++;
+	}
+	if (buff[index] == '\n')
+		dest[index] = '\n';
+	return (dest);
+}
+
 char	*ft_to_create_line(int fd, char *buff, char *line)
 {
-	int	temp;
 	ssize_t	size;
+	int		temp;
 
 	temp = 0;
 	size = BUFFER_SIZE;
-	while (ft_strchr(line, size) == 0 && temp <= 1)
+	while (ft_strchr(line, size) == 0 || temp <= 1)
 	{
 		line = ft_strjoin(line, buff);
 		if (!line)
 			return (NULL);
 		if (ft_strchr(line, size) > 0)
-			return (line);
+			return (ft_reset_buff(buff), line);
 		size = read(fd, buff, BUFFER_SIZE);
-		buff[size] = 0;
 		if (size < 0)
-			return (free(line), NULL);
+			return (ft_reset_buff(buff), free(line), NULL);
+		buff[size] = 0;
 		if (size == 0)
-			return (line);
+			return (ft_reset_buff(buff), line);
 		if (ft_strchr(buff, size) > 0 || temp > 0)
 			temp++;
 	}
@@ -65,8 +85,7 @@ char	*ft_to_create_line(int fd, char *buff, char *line)
 char	*get_next_line(int fd)
 {
 	static char	buff[BUFFER_SIZE + 1] = "\0";
-	char	*line;
-	
+	char		*line;
 
 	if (buff[0] == 0)
 	{
@@ -80,14 +99,14 @@ char	*get_next_line(int fd)
 	{
 		line = ft_strcpy_limit(buff, ft_strchr(buff, BUFFER_SIZE));
 		if (!line)
-			return (NULL);
+			return (ft_reset_buff(buff), NULL);
 		ft_fill_buff(buff);
 		return (line);
 	}
 	line = NULL;
 	line = ft_to_create_line(fd, buff, line);
 	if (!line)
-		return (NULL);
+		return (ft_reset_buff(buff), NULL);
 	ft_fill_buff(buff);
 	return (line);
 }
