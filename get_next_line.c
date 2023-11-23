@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 21:33:13 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/22 18:53:53 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/23 14:07:05 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_fill_buff(char	*buff)
 	size_t	index;
 	size_t	offset;
 
+	if (buff[0] == 0)
+		return (NULL);
 	index = 0;
 	while (buff[index] && buff[index] != '\n')
 		index++;
@@ -46,12 +48,14 @@ char	*ft_to_create_line(int fd, char *buff, char *line)
 		line = ft_strjoin(line, buff);
 		if (!line)
 			return (NULL);
-		if (ft_strchr(line, BUFFER_SIZE) > 0)
+		if (ft_strchr(line, size) > 0)
 			return (line);
 		size = read(fd, buff, BUFFER_SIZE);
 		buff[size] = 0;
 		if (size < 0)
 			return (free(line), NULL);
+		if (size == 0)
+			return (line);
 		if (ft_strchr(buff, size) > 0 || temp > 0)
 			temp++;
 	}
@@ -62,6 +66,7 @@ char	*get_next_line(int fd)
 {
 	static char	buff[BUFFER_SIZE + 1] = "\0";
 	char	*line;
+	
 
 	if (buff[0] == 0)
 	{
@@ -86,4 +91,3 @@ char	*get_next_line(int fd)
 	ft_fill_buff(buff);
 	return (line);
 }
-

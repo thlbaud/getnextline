@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 22:26:43 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/22 18:40:38 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/23 13:41:52 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ size_t	ft_strchr(const char *s, size_t size)
 	i = 0;
 	if (!s)
 		return (i);
+	if (size < BUFFER_SIZE)
+		return (1);
 	while (s[i])
 	{
 		if (s[i] == '\n')
 			return (++i);
 		i++;
 	}
-	if (i + 1 < BUFFER_SIZE && size < BUFFER_SIZE)
-		return (1);
 	return (0);
 }
 
