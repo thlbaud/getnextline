@@ -6,7 +6,7 @@
 /*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 22:26:43 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/22 15:40:44 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/22 18:40:38 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_calloc(size_t nmemb, size_t size)
 	return (alloc);
 }
 
-size_t	ft_strchr(const char *s)
+size_t	ft_strchr(const char *s, size_t size)
 {
 	size_t	i;
 
@@ -61,6 +61,8 @@ size_t	ft_strchr(const char *s)
 			return (++i);
 		i++;
 	}
+	if (i + 1 < BUFFER_SIZE && size < BUFFER_SIZE)
+		return (1);
 	return (0);
 }
 
@@ -70,7 +72,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	size_t	index;
 	size_t	index2;
 
-	dest = ft_calloc(1, ft_strlen(s1) + ft_strlen(s2) + 1);
+	dest = ft_calloc(sizeof(char), ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!dest)
 		return (NULL);
 	index = 0;
@@ -100,7 +102,7 @@ char	*ft_strcpy_limit(char *buff, size_t len)
 	char	*dest;
 	size_t	index;
 
-	dest = ft_calloc(1, len + 2);
+	dest = ft_calloc(sizeof(char), len + 1);
 	if (!dest)
 		return (NULL);
 	index = 0;

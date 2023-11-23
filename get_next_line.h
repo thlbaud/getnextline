@@ -6,7 +6,7 @@
 /*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:06:42 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/22 15:01:20 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/22 18:40:58 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
-size_t	ft_strchr(const char *s);
+size_t	ft_strchr(const char *s, size_t size);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strcpy_limit(char *buff, size_t len);
