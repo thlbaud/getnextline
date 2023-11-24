@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils _bonus.c                       :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 22:26:43 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/24 12:02:27 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/24 13:46:57 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	dest = ft_calloc(sizeof(char), ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!dest)
-		return (ft_reset_buff(s2), NULL);
+		return (free(s1), NULL);
 	index = 0;
 	if (s1)
 	{
@@ -100,7 +100,7 @@ char	*ft_strjoin(char *s1, char *s2)
 			dest[index] = s1[index];
 			index++;
 		}
-		free (s1);
+		free(s1);
 	}
 	index2 = 0;
 	while (s2[index2] && s2[index2] != '\n')

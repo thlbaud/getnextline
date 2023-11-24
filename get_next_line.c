@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 21:33:13 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/23 21:50:15 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/24 13:45:34 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_strcpy_limit(char *buff, size_t len)
 
 	dest = ft_calloc(sizeof(char), len + 1);
 	if (!dest)
-		return (ft_reset_buff(buff), NULL);
+		return (NULL);
 	index = 0;
 	while (buff && buff[index] != '\n' && buff[index])
 	{
@@ -67,7 +67,7 @@ char	*ft_to_create_line(int fd, char *buff, char *line)
 	{
 		line = ft_strjoin(line, buff);
 		if (!line)
-			return (ft_reset_buff(buff), NULL);
+			return (NULL);
 		if (ft_strchr(line, size) > 0)
 			return (line);
 		size = read(fd, buff, BUFFER_SIZE);
@@ -75,7 +75,7 @@ char	*ft_to_create_line(int fd, char *buff, char *line)
 			return (ft_reset_buff(buff), free(line), NULL);
 		buff[size] = 0;
 		if (size == 0)
-			return (ft_reset_buff(buff), line);
+			return (line);
 		if (ft_strchr(buff, size) > 0 || temp > 0)
 			temp++;
 	}

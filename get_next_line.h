@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:06:42 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/23 15:27:39 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/24 13:44:30 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+char	*ft_reset_buff(char	*buff);
 char	*ft_reset_buff(char	*buff);
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
