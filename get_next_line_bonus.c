@@ -6,13 +6,12 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 21:33:13 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/24 13:48:08 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/24 14:01:01 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 #include <fcntl.h>
-#include <limits.h>
 
 char	*ft_fill_buff(char	*buff)
 {
@@ -88,6 +87,7 @@ char	*get_next_line(int fd)
 	static char	buff[OPEN_MAX + 1][BUFFER_SIZE + 1];
 	char		*line;
 
+	buff[OPEN_MAX][0] = 0;
 	if (fd >= OPEN_MAX || fd < 0)
 		return (NULL);
 	if (buff[fd][0] == 0)
