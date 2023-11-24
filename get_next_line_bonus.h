@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:06:42 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/24 14:00:14 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/24 23:39:51 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #  define BUFFER_SIZE 100
 # endif
 # ifndef OPEN_MAX
-#  define OPEN_MAX 256
+#  define OPEN_MAX 1024
 # endif
 # include <stdio.h>
 # include <stdlib.h>

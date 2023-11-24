@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 21:33:13 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/24 14:01:01 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/24 22:40:47 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ char	*get_next_line(int fd)
 	static char	buff[OPEN_MAX + 1][BUFFER_SIZE + 1];
 	char		*line;
 
-	buff[OPEN_MAX][0] = 0;
 	if (fd >= OPEN_MAX || fd < 0)
 		return (NULL);
 	if (buff[fd][0] == 0)

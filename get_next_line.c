@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 21:33:13 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/24 13:45:34 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/24 23:45:53 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*ft_to_create_line(int fd, char *buff, char *line)
 		buff[size] = 0;
 		if (size == 0)
 			return (line);
-		if (ft_strchr(buff, size) > 0 || temp > 0)
+		if (size < BUFFER_SIZE || temp > 0)
 			temp++;
 	}
 	return (line);
