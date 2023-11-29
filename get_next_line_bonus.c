@@ -6,12 +6,11 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 21:33:13 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/29 14:39:14 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/29 18:42:04 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-#include <fcntl.h>
 
 static char	*ft_fill_buff(char	*buff)
 {

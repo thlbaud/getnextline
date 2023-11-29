@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:06:42 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/29 14:39:27 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/29 18:42:11 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # ifndef OPEN_MAX
 #  define OPEN_MAX 1024
 # endif
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 

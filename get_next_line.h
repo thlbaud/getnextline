@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:06:42 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/29 14:34:08 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/29 18:42:53 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 3
 # endif
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
