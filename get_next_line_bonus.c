@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 21:33:13 by tmouche           #+#    #+#             */
-/*   Updated: 2023/11/24 22:40:47 by tmouche          ###   ########.fr       */
+/*   Updated: 2023/11/29 14:39:14 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 #include <fcntl.h>
 
-char	*ft_fill_buff(char	*buff)
+static char	*ft_fill_buff(char	*buff)
 {
 	size_t	index;
 	size_t	offset;
@@ -37,7 +37,7 @@ char	*ft_fill_buff(char	*buff)
 	return (buff);
 }
 
-char	*ft_strcpy_limit(char *buff, size_t len)
+static char	*ft_strcpy_limit(char *buff, size_t len)
 {
 	char	*dest;
 	size_t	index;
@@ -56,7 +56,7 @@ char	*ft_strcpy_limit(char *buff, size_t len)
 	return (dest);
 }
 
-char	*ft_to_create_line(int fd, char *buff, char *line)
+static char	*ft_to_create_line(int fd, char *buff, char *line)
 {
 	ssize_t	size;
 	int		temp;
