@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:30:02 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/19 16:48:27 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/20 00:52:39 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ char *_create_line(int fd, char *buff)
 	line = NULL;
 	while (_strchr(line, '\n') == 0)
 	{
-		size = ft_strlen(buff, '\n');
+		size = ft_strlen(buff, '\n') + 1;
 		temp_cpy = _strncpy(buff, size);
 		if (!temp_line)
 			return (NULL);
-		_fill_buff(buff, &buff[size], size);
+		_fill_buff(buff);
 		line = _strjoin(temp_line, temp_cpy);
 		if (!line)
 			return (NULL);
@@ -88,16 +88,16 @@ char	*get_next_line(int fd)
 	size = _strchr(buff, '\n');
 	if (size > 0)
 	{
-		line = _strncpy(buff, size);
+		line = _strncpy(buff, size + 1);
 		if (!line)
 			return (_reset_buff(buff), NULL);
-		_fill_buff(buff, &buff[size], size);
+		_fill_buff(buff);
 		return (line);
 	}
 	line = _create_line(fd, buff);
 	if (!line)
 		return (NULL);
-	_fill_buff(buff, &buff[size], size);
+	_fill_buff(buff);
 	return (line);
 }
 
@@ -107,7 +107,7 @@ int	main(void)
 	int 	fd;
 
 	fd = open("test.txt", W_OK);
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		test = get_next_line(fd);
 		printf("%s", test);

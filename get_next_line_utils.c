@@ -3,29 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:42:26 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/19 16:46:11 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/20 00:58:24 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdlib.h>
+#include <stdio.h>
+#include <stdio.h>
 
-void	_fill_buff(char *buff, char *save, int target)
+void	_fill_buff(char *buff)
 {
 	int	index;
-	int	index_save;
+	int	offset;
 
+	if (buff[0] == 0)
+		return ;
 	index = 0;
-	index_save = 0;
-	while (buff[index] && index < target)
+	while (buff[index] && buff[index] != '\n')
+		index++;
+	if (buff[index] == '\n')
+		index++;
+	offset = 0;
+	while (buff[index])
 	{
-		buff[index] = save[index_save];
-		save[index_save] = 0;
-		++index;
+		buff[offset] = buff[index];
+		offset++;
+		index++;
 	}
+	while (buff[offset])
+		buff[offset++] = 0;
 }
 
 void	_reset_buff(char *buff)
@@ -82,7 +92,6 @@ char *_strncpy(char *src, int size)
 	while (src[index] && index < size)
 	{
 		cpy[index] = src[index];
-		src[index] = 0;
 		++index;
 	}
 	return (cpy);
