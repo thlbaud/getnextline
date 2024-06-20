@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:30:02 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/20 13:59:25 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/06/21 01:26:56 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ char	*_create_line(int fd, char *buff)
 	while (!ft_strrchr(line, '\n') && size == BUFFER_SIZE)
 	{
 		temp = ft_strjoin(line, buff);
-		_fill_buff(buff);
 		if (line)
 			free (line);
+		if (!temp)
+			return (NULL);
+		_fill_buff(buff);
 		size = read(fd, buff, BUFFER_SIZE);
 		if (size < 0)
 			return (free (temp), NULL);
@@ -67,17 +69,17 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int	main(void)
-{
-	char	*test;
-	int 	fd;
+// int	main(void)
+// {
+// 	char	*test;
+// 	int 	fd;
 
-	fd = open("test.txt", W_OK);
-	for (int i = 0; i < 5; i++)
-	{
-		test = get_next_line(fd);
-		printf("%s", test);
-		free (test);
-	}
-	return (1);
-}
+// 	fd = open("test.txt", W_OK);
+// 	for (int i = 0; i < 1; i++)
+// 	{
+// 		test = get_next_line(fd);
+// 		printf("%s", test);
+// 		free (test);
+// 	}
+// 	return (1);
+// }
