@@ -3,29 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 14:06:42 by tmouche           #+#    #+#             */
-/*   Updated: 2023/12/03 15:07:26 by tmouche          ###   ########.fr       */
+/*   Created: 2024/06/19 14:31:23 by tmouche           #+#    #+#             */
+/*   Updated: 2024/06/22 00:34:23 by thibaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
 # ifndef OPEN_MAX
 #  define OPEN_MAX 1024
 # endif
-# include <stdlib.h>
-# include <unistd.h>
+#include <stddef.h>
 
-char	*ft_reset_buff(char	*buff);
+size_t	ft_strlen(const char *s, char c);
+char	*ft_strrchr(const char *s, int c);
+char	*ft_strjoin(char const *s1, char const *s2);
+
 char	*get_next_line(int fd);
-size_t	ft_strlen(const char *s);
-size_t	ft_strchr(const char *s, size_t size);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_calloc(size_t nmemb, size_t size);
-
 #endif
