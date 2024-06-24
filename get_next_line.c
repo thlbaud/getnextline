@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:30:02 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/22 00:35:17 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/06/24 11:17:25 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static char	*_create_new_line(int fd, char *buff)
 {
 	char	*line;
 	ssize_t	size;
-	
+
 	line = NULL;
 	size = BUFFER_SIZE;
 	while (size == BUFFER_SIZE && !ft_strrchr(line, '\n'))

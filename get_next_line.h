@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:31:23 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/22 00:12:15 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/06/24 11:17:30 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
-#include <stddef.h>
+# include <stddef.h>
 
 size_t	ft_strlen(const char *s, char c);
 char	*ft_strrchr(const char *s, int c);

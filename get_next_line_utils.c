@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thibaud <thibaud@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:42:26 by tmouche           #+#    #+#             */
-/*   Updated: 2024/06/22 00:11:39 by thibaud          ###   ########.fr       */
+/*   Updated: 2024/06/24 11:17:47 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ char	*ft_strrchr(const char *s, int c)
 		return (&((char *)s)[i]);
 	return (NULL);
 }
-
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
